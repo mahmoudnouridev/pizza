@@ -1,9 +1,9 @@
 const bcrypt = require('bcrypt');
-const config = require('../config/main.js');
+const config = require('../config/main.js').password;
 
 module.exports = {
     
-    cost : config.password.cost ?? 12,
+    cost : config.cost,
         
     hash: async function(password){
         
