@@ -1,7 +1,7 @@
-const BaseController = require('./baseController');
+const baseController = require('./baseController');
 const userModel = require('../model/user');
 
-class user extends BaseController{
+class user extends baseController{
       
     async create(req, res){
         
