@@ -22,7 +22,7 @@ class mongoConnector{
     
     static getConnectionUri(connectionInfo){
         
-        return `mongodb://${mongoConnector.info.username}:${mongoConnector.info.password}@${mongoConnector.info.host}:${mongoConnector.info.port}/${mongoConnector.info.dbname}`;    
+        return `mongodb://${mongoConnector.info.host}:${mongoConnector.info.port}/${mongoConnector.info.dbname}`;    
         
     }
     
