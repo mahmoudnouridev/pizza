@@ -11,7 +11,12 @@ const config = {
             options: ''
             
         }                
-    }   
+    },
+    
+    password:{
+     
+        cost: 12
+    }
     
     
 }
