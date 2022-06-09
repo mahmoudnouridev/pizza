@@ -43,3 +43,7 @@ class user extends db{
     
     
 }
+
+module.exports = user;
+
+
