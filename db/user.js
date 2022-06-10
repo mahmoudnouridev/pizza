@@ -5,7 +5,7 @@ class user{
     
     async create(email, name, password, address){
         
-        let con = db.getConnection();
+        let con = await db.getConnection();
         let doc = {'email': email, 'name': name, 'password_hash': password, 'address': address, 'basket': {} };
         return await con.users.insertOne( doc );
         
@@ -13,7 +13,7 @@ class user{
     
     async edit(id, email, name, address){
         
-        let con = db.getConnection();
+        let con = await db.getConnection();
         return await con.users.updateOne({'_id': id},{
            
             $set:{
@@ -30,14 +30,14 @@ class user{
     
     async remove(id){
         
-        let con = db.getConnection();
+        let con = await db.getConnection();
         return await con.deleteOne({'_id': id});
-        
+        await 
     }
     
     async getLoginInfo(email){
         
-        let con = db.getConnection();
+        let con = await db.getConnection();
         let projection = {'password_hash': 1};
         return await con.users.findOne({'email': email}, {$projection: projection});
         
