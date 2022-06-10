@@ -20,7 +20,7 @@ const config = {
     
     session:{
         
-        lifetime_in_seconds: 1800;// 30 minutes to logout automatically
+        lifetime_in_seconds: 1800// 30 minutes to logout automatically
         
     }
     
