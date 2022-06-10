@@ -16,7 +16,14 @@ const config = {
     password:{
      
         cost: 12
+    },
+    
+    session:{
+        
+        lifetime_in_seconds: 1800;// 30 minutes to logout automatically
+        
     }
+    
     
     
 }
