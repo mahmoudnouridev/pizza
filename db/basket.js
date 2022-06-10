@@ -5,7 +5,7 @@ class basket{
     
     addItem(userId, foodId, quantity){
         
-        let con = db.getConnection();
+        let con = await db.getConnection();
         let selector = {'_id': userId, 'basket.food_id': foodId};
         let food_id = await con.users.findOne(selector, {$projection:{'basket.food_id': 1, '_id': 0}});
         
@@ -38,7 +38,7 @@ class basket{
     
     async getAllItems(userId){
         
-        let con = db.getConnection();
+        let con = await db.getConnection();
         let projection = {$projection: {'basket': 1}};
         return con.users.find({'_id': userId}, projection);
         
