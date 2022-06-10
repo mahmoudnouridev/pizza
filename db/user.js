@@ -14,7 +14,7 @@ class user extends db{
         
         return await db.con.users.updateOne({'_id': id},{
            
-            $set{
+            $set:{
                 
                 'email': email,
                 'name': name,
