@@ -1,17 +1,19 @@
-const db = require('./db');
+const db = require('./mongoConnector');
 
 class food extends db{
     
     
     async addNewItem(name, price){
         
-        return await db.con.menu.insertOne({'name': name, 'price': price});
+        let con = await db.getConnection();
+        return await con.menu.insertOne({'name': name, 'price': price});
         
     }
     
     async getAll(){
         
-        return await db.con.menu.find({}).toArray();
+        let con = await db.getConnection();
+        return await con.menu.find({}).toArray();
         
     }
     
