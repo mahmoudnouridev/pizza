@@ -1,4 +1,4 @@
-const db = require('db');
+const db = require('./db');
 
 class food extends db{
     
@@ -11,7 +11,7 @@ class food extends db{
     
     async getAll(){
         
-        return await db.con.menu.find({});
+        return await db.con.menu.find({}).toArray();
         
     }
     
