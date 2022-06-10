@@ -59,7 +59,11 @@ class sess extends baseController{
         if(req.session.hasOwnProperty('auth_time')){
             
             if(req.session.auth_time + config.lifetime_in_seconds >= current_time)
+            {
+                // update auth time after any request
+                req.session.auth_time = current_time;
                 return true;
+            }    
                 
             this.removeAuthInfo(req);     
         }
