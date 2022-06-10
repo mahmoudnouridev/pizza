@@ -1,6 +1,6 @@
 const db = require('./mongoConnector');
 
-class food extends db{
+class food{
     
     
     async addNewItem(name, price){
