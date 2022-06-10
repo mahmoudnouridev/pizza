@@ -1,25 +1,26 @@
-const db = require('./db');
+const db = require('./mongoConnector');
 
-class basket extends db{
+class basket{
     
     
     addItem(userId, foodId, quantity){
         
+        let con = db.getConnection();
         let selector = {'_id': userId, 'basket.food_id': foodId};
-        let food_id = await db.con.users.findOne(selector, {$projection:{'basket.food_id': 1, '_id': 0}});
+        let food_id = await con.users.findOne(selector, {$projection:{'basket.food_id': 1, '_id': 0}});
         
         if(food_id){
             
             //update item
             let inc = {$inc: {'basket.quantity': quantity}};
-            return await db.con.users.updateOne(selector, inc);
+            return await con.users.updateOne(selector, inc);
             
             
         }
         
         //else insert new item
         
-        return await db.con.users.updateOne({'_id': userId}, {
+        return await con.users.updateOne({'_id': userId}, {
             
             $set:{
                 
@@ -37,8 +38,9 @@ class basket extends db{
     
     async getAllItems(userId){
         
+        let con = db.getConnection();
         let projection = {$projection: {'basket': 1}};
-        return db.con.users.find({'_id': userId}, projection);
+        return con.users.find({'_id': userId}, projection);
         
     }
     
