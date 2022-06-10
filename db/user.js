@@ -5,7 +5,7 @@ class user extends db{
     
     async create(email, name, password, address){
         
-        let doc = {'email': email, 'name': name, 'password_hash': password, 'address': address};
+        let doc = {'email': email, 'name': name, 'password_hash': password, 'address': address, 'basket': {} };
         return await db.con.users.insertOne( doc );
         
     }
