@@ -1,4 +1,4 @@
-const baseController = require('baseController');
+const baseController = require('./baseController');
 const db = require('../db/user');
 const pass = require('../general/password');
 const config = require('../config/main').session;
