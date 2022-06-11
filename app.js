@@ -4,4 +4,4 @@ const app = express();
 
 require('./views/routes')(app);
 
-app.listen(port, _=>{console.log('Conected on port ' + port);});
+app.listen(port, _=>{console.log('Connected on port ' + port);});
