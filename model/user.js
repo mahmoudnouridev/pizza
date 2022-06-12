@@ -6,7 +6,7 @@ class user{
     
     constructor(dbUser, passwordHasher){
      
-        const db = dbUser;
+        this.db = dbUser;
         this.hasher = passwordHasher;
         
     }    
