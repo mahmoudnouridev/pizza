@@ -1,10 +1,10 @@
-const foodDb = require('../db/food');
+const dbFood = require('../db/food');
 
 class food{
     
-    constructor(){
+    constructor(dbFood){
         
-        const db = new foodDb() 
+        const db = dbFood;
         
     }
     
@@ -22,4 +22,4 @@ class food{
      
 }
 
-module.exports = food;
+module.exports = new food(dbFood);
