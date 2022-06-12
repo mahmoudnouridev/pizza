@@ -9,8 +9,8 @@ class sess extends baseController{
      
         super();
         
-        const user = dbUser;
-        const hasher = hasher;
+        this.user = dbUser;
+        this.hasher = hasher;
         
     }    
     
