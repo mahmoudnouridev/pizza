@@ -1,10 +1,18 @@
 const baseController = require('./baseController');
-const db = require('../db/user');
+const dbUser = require('../db/user');
 const pass = require('../general/password');
 const config = require('../config/main').session;
 
 class sess extends baseController{
     
+    constructor(dbUser, hasher){
+     
+        super();
+        
+        const user = dbUser;
+        const hasher = hasher;
+        
+    }    
     
     async login(req, res){
         
@@ -17,9 +25,8 @@ class sess extends baseController{
             res.send({'error': 'something was wrong'});
             return;
         }
-        
-        let user = new db();
-        let info = await user.getLoginInfo(this.clean.email);
+       
+        let info = await this.user.getLoginInfo(this.clean.email);
         
         if(!info){
             
@@ -27,7 +34,7 @@ class sess extends baseController{
             return;
         }
         
-        if( await pass.verify(password, info.password_hash) )
+        if( await this.hasher.verify(password, info.password_hash) )
         {
             this.keepAuthInfo(req, info._id);
             res.send({'action': true});
@@ -81,8 +88,6 @@ class sess extends baseController{
 }
 
 
-module.exports = sess;
-
-
+module.exports = new sess(dbUser, pass);
 
 
