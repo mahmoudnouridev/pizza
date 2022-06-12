@@ -4,7 +4,7 @@ class dbBase{
     
     constructor(mongoConnector){
         
-        const dbConnector = mongoConnector;
+        this.dbConnector = mongoConnector;
         
     }
     
