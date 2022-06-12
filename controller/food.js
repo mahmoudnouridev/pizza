@@ -6,7 +6,7 @@ class Food extends baseController{
     constructor(foodModel){
      
         super();
-        const food = foodModel;
+        this.food = foodModel;
         
     }    
     
