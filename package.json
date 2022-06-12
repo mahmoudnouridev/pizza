@@ -1,0 +1,16 @@
+{
+    "name": "pizza",
+    "description": "An App For Pizza Delivery",
+    "main": "app.js",
+    "dependencies":{
+        
+        "bcrypt": "5.0.1",
+        "express": "4.18.1"      
+        
+    },
+    "repository": "https://github.com/mahmoudnouridev/pizza/",
+    "author": "Mahmoud Nouri <mahmoudnouridev@gmail.com>",
+    "license": "MIT",
+    "version: "1.0.0"    
+    
+}    
