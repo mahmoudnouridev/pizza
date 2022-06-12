@@ -84,6 +84,12 @@ class sess extends baseController{
         delete req.session.auth_time;
         
     }
+    
+    isAdmin(req){
+        
+        return this.isLive(req) && req.session.hasOwnProperty('is_admin');
+        
+    }    
 
 }
 
