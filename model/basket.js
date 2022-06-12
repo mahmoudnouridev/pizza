@@ -22,4 +22,4 @@ class basket{
 }
 
 
-module.exports = new basket();
+module.exports = new basket(dbBasket);
