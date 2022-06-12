@@ -4,7 +4,7 @@ class basket{
     
     constructor(dbBasket){
         
-        const db = dbBasket;
+        this.db = dbBasket;
         
     }
     
