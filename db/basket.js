@@ -1,11 +1,12 @@
-const db = require('./mongoConnector');
+const db = require('./dbBase');
+const mongoConnector = require('./mongoConnector');
 
 class basket{
     
     
     addItem(userId, foodId, quantity){
         
-        let con = await db.getConnection();
+        let con = await this.dbConnector.getConnection();
         let selector = {'_id': userId, 'basket.food_id': foodId};
         let food_id = await con.users.findOne(selector, {$projection:{'basket.food_id': 1, '_id': 0}});
         
@@ -38,7 +39,7 @@ class basket{
     
     async getAllItems(userId){
         
-        let con = await db.getConnection();
+        let con = await this.dbConnector.getConnection();
         let projection = {$projection: {'basket': 1}};
         return con.users.find({'_id': userId}, projection);
         
@@ -47,6 +48,6 @@ class basket{
 }
 
 
-module.exports = basket;
+module.exports = new basket(mongoConnector);
 
 
