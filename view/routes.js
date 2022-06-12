@@ -1,6 +1,6 @@
 const sess = require('../controller/sess');
 const food = require('../controller/food');
-
+const guard = require('./guard');
 
 module.exports = function(app){
 
@@ -14,30 +14,26 @@ app.get('/login', (req, res)=>{
 app.post('/login', (req, res)=>{
     
     // login user here
-    let s = new sess();
-    s.login(req, res);
+    sess.login(req, res);
     
 });
 
-app.get('/protected/logout', (req, res)=>{
+app.get('/protected/logout', guard.auth, (req, res)=>{
    
-   let s = new sess();
-   s.logout(req, res);
+   sess.logout(req, res);
     
 });
 
-app.get('/protected/menu', (req, res)=>{
+app.get('/protected/menu', guard.auth, (req, res)=>{
     
     // send to user all menu items
-    let controller = new food();
-    controller.getAll(req, res);
+    food.getAll(req, res);
     
 });
 
-app.post('/admin/menu/add', (req, res)=>{
+app.post('/admin/menu/add', guard.only_admin, (req, res)=>{
     
-    let controller = new food();
-    controller.create(req, res);
+    food.create(req, res);
     
 });
 
@@ -48,8 +44,7 @@ app.get('/register', (req, res)=>{
 
 app.post('/register', (req, res)=>{
     
-   let controller = new user();
-   controller.create(req, res);
+   user.create(req, res);
     
 });
 
