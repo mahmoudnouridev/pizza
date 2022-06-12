@@ -4,7 +4,7 @@ class food{
     
     constructor(dbFood){
         
-        const db = dbFood;
+        this.db = dbFood;
         
     }
     
