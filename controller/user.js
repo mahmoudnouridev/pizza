@@ -2,6 +2,14 @@ const baseController = require('./baseController');
 const userModel = require('../model/user');
 
 class user extends baseController{
+    
+    constructor(userModel){
+     
+          super();
+          
+          this.user = userModel;
+          
+    }      
       
     async create(req, res){
         
@@ -21,9 +29,8 @@ class user extends baseController{
             res.send({'error': this.errors});
             return;
         }
-        
-        let user = new userModel();
-        await user.create(this.clean.email, this.clean.fname, this.clean.password, this.clean.address);
+       
+        await this.user.create(this.clean.email, this.clean.fname, this.clean.password, this.clean.address);
         
         res.send({'action': true});            
     }
@@ -31,4 +38,4 @@ class user extends baseController{
 }
 
 
-module.exports = User;
+module.exports = new user(userModel);
