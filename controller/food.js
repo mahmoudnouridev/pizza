@@ -1,7 +1,14 @@
 const baseController = require('./baseController');
-const userModel = require('../model/food');
+const foodModel = require('../model/food');
 
-class food extends baseController{
+class Food extends baseController{
+    
+    constructor(foodModel){
+     
+        super();
+        const food = foodModel;
+        
+    }    
     
     async create(req, res){
         
@@ -15,20 +22,16 @@ class food extends baseController{
             return;
         }
         
-        let f = new foodModel();
-        
-        await f.create(this.clean.name, this.clean.price);        
+        await this.food.create(this.clean.name, this.clean.price);        
         
         res.send({'action': true});
         
     }
     
     async getAll(req, res){
-        
-        let f = new foodModel();
-        
-        res.send( await f.getAll() );        
+              
+        res.send( await this.food.getAll() );        
     }   
 }
 
-module.exports = food;
+module.exports = new Food(foodModel);
